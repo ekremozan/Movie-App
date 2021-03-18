@@ -51,6 +51,7 @@ androidExtensions {
 
 dependencies {
 
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     /*Views*/
