@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nav_graph">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/moviesFragment">
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="ekrem.ozan.movieapp.presentation.movies.MoviesFragment"
+        android:label="MoviesFragment">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_moviesFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+        <action
+            android:id="@+id/action_moviesFragment_to_searchMovieFragment"
+            app:destination="@id/searchMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="ekrem.ozan.movieapp.presentation.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment" />
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="ekrem.ozan.movieapp.presentation.list.MovieListFragment"
+        android:label="MovieListFragment">
+        <action
+            android:id="@+id/action_movieListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="ekrem.ozan.movieapp.presentation.search.SearchMovieFragment"
+        android:label="SearchMovieFragment">
+        <action
+            android:id="@+id/action_searchMovieFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+    </fragment>
 </navigation>

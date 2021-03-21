@@ -4,49 +4,14 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import ekrem.ozan.movieapp.base.domain.BaseViewViewState
 import ekrem.ozan.movieapp.util.SingleLiveEvent
-import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 
 abstract class BaseViewModel(
     val baseViewViewStateLiveData: SingleLiveEvent<BaseViewViewState> = SingleLiveEvent()
 ) : ViewModel() {
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    fun getCompositeDisposable() = compositeDisposable
-    fun Disposable.track() = compositeDisposable.add(this)
     open fun handleIntent(extras: Bundle) {}
-
-    /* inline fun <T> Observable<T>.sendRequest(
-         crossinline successHandler: (T) -> Unit
-     ) {
-         updateUIState(showLoading = true)
-         subscribeOn(Schedulers.io())
-             .observeOn(AndroidSchedulers.mainThread())
-             .subscribe(
-                 { data ->
-                     successHandler(data)
-                     updateUIState(showContent = true)
-                 },
-                 { throwable ->
-                     updateUIState(showError = true, throwable = throwable)
-                 }).track()
-     }*/
-
-    inline fun <T> Observable<T>.sendRequestWithCheckEmpty(
-        crossinline successHandler: (T) -> Unit,
-        crossinline emptyHandler: (T) -> Boolean
-    ) {
-        updateUIState(showLoading = true)
-        subscribe(
-            { data ->
-                successHandler(data)
-                if (emptyHandler(data)) updateUIState(showEmpty = true)
-                else updateUIState(showContent = true)
-            },
-            { throwable ->
-                updateUIState(showError = true, throwable = throwable)
-            }).track()
-    }
 
     fun updateUIState(
         showLoading: Boolean = false,
@@ -59,6 +24,7 @@ abstract class BaseViewModel(
             BaseViewViewState(showLoading, showContent, showError, showEmpty, throwable)
     }
 
-    override fun onCleared() = compositeDisposable.dispose()
-
+    suspend inline fun <T> Flow<T>.sendRequest(crossinline onComplete: (T) -> Unit) {
+        onEach { data -> onComplete(data) }.collect()
+    }
 }

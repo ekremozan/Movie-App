@@ -24,11 +24,11 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : DaggerAp
     @get:LayoutRes
     protected abstract val layoutResourceId: Int
     lateinit var binding: DB
-    lateinit var viewModel: VM
+    private lateinit var viewModel: VM
     protected abstract val classTypeOfViewModel: Class<VM>
     private var hasRequestSend = false
     private var progressDialog: Dialog? = null
-    private var baseView: BaseView? = null
+    protected var baseView: BaseView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +72,4 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : DaggerAp
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }

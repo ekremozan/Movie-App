@@ -44,11 +44,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApi(
-        builder: Retrofit.Builder,
-        okHttpClientBuilder: OkHttpClient.Builder,
-        interceptor: ApiInterceptor
-    ): RemoteApiService {
+    fun provideApi(builder: Retrofit.Builder, okHttpClientBuilder: OkHttpClient.Builder, interceptor: ApiInterceptor): RemoteApiService {
         okHttpClientBuilder.addInterceptor(interceptor)
         val client = okHttpClientBuilder.build()
         return builder.client(client)

@@ -9,5 +9,6 @@
     <string name="search_view_hint">Search Movie</string>
     <string name="no_search_result">No search results.</string>
     <string name="something_went_wrong">Something went wrong.</string>
+    <string name="transition_from_home_to_search" translatable="false">transitionFromHomeToSearch</string>
     <string name="retry">Retry</string>
 </resources>

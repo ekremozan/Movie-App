@@ -1,7 +1,6 @@
 package ekrem.ozan.movieapp.di
 
 import android.app.Application
-import barissaglam.client.movieapp.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
