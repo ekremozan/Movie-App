@@ -103,11 +103,11 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:fillViewport="true"
-            android:paddingTop="@dimen/margin_16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <ekrem.ozan.movieapp.view.BaseView
                 android:id="@+id/baseView"
+                android:paddingBottom="@dimen/padding_32dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -120,23 +120,46 @@
                     android:paddingEnd="60dp"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--   <include
-                       android:id="@+id/layoutPopularMovies"
-                       layout="@layout/layout_movie_view_pager"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="@dimen/margin_16dp"
-                       app:layout_constraintTop_toBottomOf="@id/viewPagerNowPlayingMovies"
-                       app:visibility="@{true}" />
+                <include
+                    android:id="@+id/layoutWeeklyTrendingMovies"
+                    layout="@layout/layout_movie_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/viewPagerNowPlayingMovies"
+                    app:title="@{vm.livaDataViewState.weeklyTrendingMoviesTitle}"
+                    app:visibility="@{true}" />
 
-                   <include
-                       android:id="@+id/layoutUpComingMovies"
-                       layout="@layout/layout_movie_view_pager"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="@dimen/margin_16dp"
-                       app:layout_constraintTop_toBottomOf="@id/layoutPopularMovies"
-                       app:visibility="@{true}" />-->
+                <include
+                    android:id="@+id/layoutDailyTrendingMovies"
+                    layout="@layout/layout_movie_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/layoutWeeklyTrendingMovies"
+                    app:title="@{vm.livaDataViewState.dailyTrendingMoviesTitle}"
+                    app:visibility="@{true}" />
+
+                <include
+                    android:id="@+id/layoutPopularMovies"
+                    layout="@layout/layout_movie_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/layoutDailyTrendingMovies"
+                    app:title="@{vm.livaDataViewState.popularMoviesTitle}"
+                    app:visibility="@{true}" />
+
+                <include
+                    android:id="@+id/layoutUpComingMovies"
+                    layout="@layout/layout_movie_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/layoutPopularMovies"
+                    app:title="@{vm.livaDataViewState.upcomingMoviesTitle}"
+                    app:visibility="@{true}" />
+
 
             </ekrem.ozan.movieapp.view.BaseView>
         </androidx.core.widget.NestedScrollView>

@@ -32,3 +32,4 @@ fun hideKeyboard(view: View?, context: Context?) {
         imm?.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
+

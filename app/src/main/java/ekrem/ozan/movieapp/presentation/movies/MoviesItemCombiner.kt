@@ -1,9 +1,12 @@
 package ekrem.ozan.movieapp.presentation.movies
 
 import ekrem.ozan.movieapp.data.model.uimodel.MovieListViewItem
+import ekrem.ozan.movieapp.util.Response
 
-class MoviesItemCombiner : (MovieListViewItem, MovieListViewItem, MovieListViewItem, MovieListViewItem) -> MoviesFragmentViewState {
-    override fun invoke(p1: MovieListViewItem, p2: MovieListViewItem, p3: MovieListViewItem, p4: MovieListViewItem): MoviesFragmentViewState {
-        return MoviesFragmentViewState(popularMovies = p1, upcomingMovies = p2, weeklyTrendingMovies = p3, dailyTrendingMovies = p4)
-    }
-}
+fun moviesItemCombiner(
+    popularMovies: Response<MovieListViewItem>,
+    upcomingMovies: Response<MovieListViewItem>,
+    weeklyTrendingMovies: Response<MovieListViewItem>,
+    dailyTrendingMovies: Response<MovieListViewItem>
+): MoviesFragmentViewState = MoviesFragmentViewState(popularMovies, upcomingMovies, weeklyTrendingMovies, dailyTrendingMovies)
+
