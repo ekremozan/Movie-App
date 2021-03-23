@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import ekrem.ozan.movieapp.R
 import ekrem.ozan.movieapp.base.extension.clickSubmitButton
 import ekrem.ozan.movieapp.base.view.BaseFragment
+import ekrem.ozan.movieapp.data.enum.MovieListPageType
 import ekrem.ozan.movieapp.databinding.FragmentSearchMovieBinding
 import ekrem.ozan.movieapp.presentation.movies.MoviesViewModel
 
@@ -20,17 +21,15 @@ class SearchMovieFragment : BaseFragment<FragmentSearchMovieBinding, MoviesViewM
         setupSearchView()
     }
 
-
     override fun setupClickListeners() {
         binding.imageButtonBack.setOnClickListener { findNavController().popBackStack() }
-
+        binding.searchView.clickSubmitButton { text ->
+            findNavController().navigate(SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieListFragment(pageType = MovieListPageType.SEARCH, searchText = text))
+        }
     }
 
     private fun setupSearchView() {
         (binding.searchView.findViewById(androidx.appcompat.R.id.search_src_text) as TextView).setTextColor(Color.WHITE)
-        binding.searchView.clickSubmitButton { query ->
-
-        }
     }
 
 }

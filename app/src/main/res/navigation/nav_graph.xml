@@ -25,6 +25,14 @@
         android:id="@+id/movieListFragment"
         android:name="ekrem.ozan.movieapp.presentation.list.MovieListFragment"
         android:label="MovieListFragment">
+        <argument
+            android:name="page_type"
+            app:argType="ekrem.ozan.movieapp.data.enum.MovieListPageType" />
+        <argument
+            android:name="search_text"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />

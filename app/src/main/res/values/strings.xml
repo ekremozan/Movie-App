@@ -11,4 +11,6 @@
     <string name="something_went_wrong">Something went wrong.</string>
     <string name="transition_from_home_to_search" translatable="false">transitionFromHomeToSearch</string>
     <string name="retry">Retry</string>
+    <string name="search_movie">Search movie</string>
+    <string name="back_button">Back button</string>
 </resources>
